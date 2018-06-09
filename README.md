@@ -12,5 +12,5 @@ extension ID: ID of the extension in step 3. e.g., "kwhpccgfwcmffmibeeyjdejjlycl
 6. Create registry key named "cpr" and modify its data to the absolute path of the file (ChromePlusRecord\CPR\cpr.json).
 
 System introduction videos:
-https://www.youtube.com/watch?v=5cyRsRQjG5M
-https://www.youtube.com/watch?v=D5RVOpr_JBE
+1. https://www.youtube.com/watch?v=5cyRsRQjG5M
+2. https://www.youtube.com/watch?v=D5RVOpr_JBE
