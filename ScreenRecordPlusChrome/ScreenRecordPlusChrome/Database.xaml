@@ -1,0 +1,95 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.Database"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Database" Icon="main.ico" Height="300" Width="500" Closed="Window_Closed" Loaded="Window_Loaded">
+    <Grid Background="#FFC1C1C1">
+        <StackPanel x:Name="sp_database_tabcontrol">
+            <TabControl Height="{Binding ActualHeight, ElementName=sp_database_tabcontrol}">
+                <TabItem Header="RowData">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="gd_database_rowdata" RowHeaderWidth="20" ColumnHeaderHeight="30" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="RID" Binding="{Binding RID}" Width="60" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="SubjectName" Binding="{Binding SubjectName}" Width="90" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="Time(ms)" Binding="{Binding Time}" Width="70" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="MousePosX(px)" Binding="{Binding MousePosX}" Width="100" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="MousePosY(px)" Binding="{Binding MousePosY}" Width="100" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="GazePosX(px)" Binding="{Binding GazePosX}" Width="100" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="GazePosY(px)" Binding="{Binding GazePosY}" Width="100" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="ScrollTopX(px)" Binding="{Binding ScrollTopX}" Width="100" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="ScrollTopY(px)" Binding="{Binding ScrollTopY}" Width="100" ></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="URLEvent">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid x:Name="gd_database_urlevent" RowHeaderWidth="20" ColumnHeaderHeight="30" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="URLID" Binding="{Binding URLID}" Width="60" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="SubjectName" Binding="{Binding SubjectName}" Width="90" ></DataGridTextColumn>
+                                    <DataGridHyperlinkColumn Header="URL" Binding="{Binding URL}" Width="90" ></DataGridHyperlinkColumn>
+                                    <DataGridTextColumn Header="Keyword" Binding="{Binding Keyword}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="StartTime(ms)" Binding="{Binding StartTime}" Width="90" ></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="MKEvent">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid x:Name="gd_database_mkevent" RowHeaderWidth="20" ColumnHeaderHeight="30" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="MKID" Binding="{Binding MKID}" Width="60" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="SubjectName" Binding="{Binding SubjectName}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="EventTime(ms)" Binding="{Binding EventTime}" Width="100" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="EventType" Binding="{Binding EventType}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="EventTask" Binding="{Binding EventTask}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="EventParam" Binding="{Binding EventParam}" Width="90" ></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="GazeFixation">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid x:Name="gd_database_gazefixation" RowHeaderWidth="20" ColumnHeaderHeight="30" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="FID" Binding="{Binding FID}" Width="60" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="SubjectName" Binding="{Binding SubjectName}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="StartTime(ms)" Binding="{Binding StartTime}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Duration(ms)" Binding="{Binding Duration}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="PositionX(px)" Binding="{Binding PositionX}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="PositionY(px)" Binding="{Binding PositionY}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="ScrollTopX(px)" Binding="{Binding ScrollTopX}" Width="100" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="ScrollTopY(px)" Binding="{Binding ScrollTopY}" Width="100" ></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="MouseFixation">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid x:Name="gd_database_mousefixation" RowHeaderWidth="20" ColumnHeaderHeight="30" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="FID" Binding="{Binding FID}" Width="60" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="SubjectName" Binding="{Binding SubjectName}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="StartTime(ms)" Binding="{Binding StartTime}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Duration(ms)" Binding="{Binding Duration}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="PositionX(px)" Binding="{Binding PositionX}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="PositionY(px)" Binding="{Binding PositionY}" Width="90" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="ScrollTopX(px)" Binding="{Binding ScrollTopX}" Width="100" ></DataGridTextColumn>
+                                    <DataGridTextColumn Header="ScrollTopY(px)" Binding="{Binding ScrollTopY}" Width="100" ></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</Window>

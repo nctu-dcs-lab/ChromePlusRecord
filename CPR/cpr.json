@@ -1,0 +1,9 @@
+{
+  "name": "cpr",
+  "description": "Record Native support for Chrome Extension",
+  "path": "<path of system execution file>",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://<extension ID>/"
+  ]
+}  

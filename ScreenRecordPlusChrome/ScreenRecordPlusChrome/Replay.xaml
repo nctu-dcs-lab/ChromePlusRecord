@@ -1,0 +1,294 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.Replay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:as="clr-namespace:ScreenRecordPlusChrome"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:CustomWPFColorPicker="clr-namespace:CustomWPFColorPicker;assembly=CustomWPFColorPicker"
+        Title="Replay" Icon="main.ico" Height="600" Width="700" MinHeight="230">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ScreenRecordPlusChrome;component/Resource/Style/SliderStyle.xaml" />
+                <ResourceDictionary Source="/ScreenRecordPlusChrome;component/Resource/Style/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="g_replay_mainGrid">
+        <StackPanel>
+            <Grid x:Name="g_replay_topController" Background="#FFE6E6E6" Height="45" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="cb_replay_videoName" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="10,10,0,0" SelectionChanged="cb_replay_videoName_SelectionChanged"/>
+                    <Label Content="Speed:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,7,0,0" FontSize="14"/>
+                    <wpfTool:DoubleUpDown x:Name="dud_replay_speed" FormatString="F1" Value="1.0" Increment=".1" Maximum="2.0" Minimum="0.1" Margin="5,10,0,0" Height="19" HorizontalAlignment="Left" Width="70" VerticalAlignment="Top" ValueChanged="dud_replay_speed_ValueChanged"/>
+                    <Button x:Name="bt_replay_sound" Content="♬" Style="{DynamicResource SoundButtonStyle}" HorizontalAlignment="Left" Height="30" Margin="10,7,0,0" VerticalAlignment="Top" Width="30" BorderThickness="0" Background="{x:Null}" Click="bt_replay_sound_Click">
+                        <Button.ToolTip>
+                            <Border Background="LightBlue" Margin="2,2,2,2">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Text="Video Sound :"/>
+                                    <TextBlock Text="Mute or unmute."/>
+                                </StackPanel>
+                            </Border>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button x:Name="bt_replay_calculate" Content="F" Style="{DynamicResource SoundButtonStyle}" HorizontalAlignment="Left" Margin="10,7,0,0" Width="30" Height="30" VerticalAlignment="Top" BorderThickness="0" Background="{x:Null}" Click="bt_replay_calculate_Click" >
+                        <Button.ToolTip>
+                            <Border Background="LightBlue" Margin="2,2,2,2">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Text="Calculate Fixations :"/>
+                                    <TextBlock Text="Calculate fixations of the subject."/>
+                                </StackPanel>
+                            </Border>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button x:Name="bt_replay_exportVideo" Content="E" Style="{DynamicResource SoundButtonStyle}" HorizontalAlignment="Left" Margin="10,7,0,0" Width="30" Height="30" VerticalAlignment="Top" BorderThickness="0" Background="{x:Null}" Click="bt_replay_exportVideo_Click">
+                        <Button.ToolTip>
+                            <Border Background="LightBlue" Margin="2,2,2,2">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Text="Export :"/>
+                                    <TextBlock Text="Export the video of the subject and add the&#13;information with the style you selected."/>
+                                </StackPanel>
+                            </Border>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="g_replay_toolbar" Height="60">
+                <ToolBarTray Background="Black">
+                    <ToolBar Band="1" BandIndex="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Background="#FFDAE7F5">
+                        <Image x:Name="img_mouse" Height="23" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Source="Resource\Picture\mouse.png"/>
+                        <Separator/>
+                        <Button x:Name="bt_toolbar_mouse_track" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Click="bt_toolbar_mouse_track_Click" Background="Gray" >
+                            <Image Source="Resource\Picture\track.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Mouse track"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button x:Name="bt_toolbar_mouse_track_type" Content="S" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Black" FontSize="16" Foreground="White" FontWeight="Bold" Click="bt_toolbar_mouse_track_type_Click" >
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="S: Track move when scroll&#13;D: Track disappear when scroll"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_mouse_track_colorpicker" Height="23" CurrentColor="Red"/>
+                            <TextBox x:Name="tb_toolbar_mouse_track_colorpicker" Text="{Binding ElementName=bt_toolbar_mouse_track_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" TextChanged="tb_toolbar_mouse_track_colorpicker_TextChanged" Visibility="Hidden" Width="5"/>
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_mouse_track_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_mouse_track_linewidth_ValueChanged"/>
+                        <Separator/>
+                        <Button x:Name="bt_toolbar_mouse_cursor" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_mouse_cursor_Click" >
+                            <Image Source="Resource\Picture\cursor.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Mouse cursor"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button x:Name="bt_toolbar_mouse_cursor_circle" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_mouse_cursor_circle_Click">
+                            <Image Source="Resource\Picture\circle.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Mouse cursor with circle shape"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_mouse_cursor_circle_colorpicker" Height="23" CurrentColor="Red"/>
+                            <TextBox x:Name="tb_toolbar_mouse_cursor_circle_colorpicker" Text="{Binding ElementName=bt_toolbar_mouse_cursor_circle_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_mouse_cursor_circle_colorpicker_TextChanged"/>
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_mouse_cursor_circle_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_mouse_cursor_circle_linewidth_ValueChanged"/>
+                        <Separator/>
+                        <Button x:Name="bt_toolbar_mouse_fixation" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_mouse_fixation_Click">
+                            <Image Source="Resource\Picture\ring.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Mouse fixation"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_mouse_fixation_colorpicker" Height="23" CurrentColor="Red"/>
+                            <TextBox x:Name="tb_toolbar_mouse_fixation_colorpicker" Text="{Binding ElementName=bt_toolbar_mouse_fixation_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_mouse_fixation_colorpicker_TextChanged"/>
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_mouse_fixation_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_mouse_fixation_linewidth_ValueChanged" />
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_mouse_fixation_rate" Margin="5,1,0,0" Height="23" Width="40" Minimum="1" Maximum="9" Value="5" Background="Lavender" ValueChanged="iud_toolbar_mouse_fixation_rate_ValueChanged">
+                            <wpfTool:IntegerUpDown.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Fixation circle will become bigger&#13;when this value becomes higher"/>
+                                </StackPanel>
+                            </wpfTool:IntegerUpDown.ToolTip>
+                        </wpfTool:IntegerUpDown>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_mouse_browsertoolbarHeight" Margin="5,1,0,0" Height="23" Width="50" Minimum="0" Value="66" Background="Silver" ValueChanged="iud_toolbar_mouse_browsertoolbarHeight_ValueChanged">
+                            <wpfTool:IntegerUpDown.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Set height of browser toolbar to let fixation&#13;at toolbar don't move during scrolling.&#13;Set this value to zero if you want to all&#13;fixations move during scrolling the page."/>
+                                </StackPanel>
+                            </wpfTool:IntegerUpDown.ToolTip>
+                        </wpfTool:IntegerUpDown>
+                        <Button x:Name="bt_toolbar_mouse_scanpath" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_mouse_scanpath_Click">
+                            <Image Source="Resource\Picture\scanpath.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Mouse path"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_mouse_scanpath_colorpicker" Height="23" CurrentColor="Red"/>
+                            <TextBox x:Name="tb_toolbar_mouse_scanpath_colorpicker" Text="{Binding ElementName=bt_toolbar_mouse_scanpath_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_mouse_scanpath_colorpicker_TextChanged" />
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_mouse_scanpath_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_mouse_scanpath_linewidth_ValueChanged" />
+                        <Button x:Name="bt_toolbar_mouse_fixationID" Content="ID" FontSize="15" Foreground="#3D3D3D" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_mouse_fixationID_Click" >
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Mouse fixation ID"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_mouse_fixationID_colorpicker" Height="23" CurrentColor="Red"/>
+                            <TextBox x:Name="tb_toolbar_mouse_fixationID_colorpicker" Text="{Binding ElementName=bt_toolbar_mouse_fixationID_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_mouse_fixationID_colorpicker_TextChanged"  />
+                        </StackPanel>
+                    </ToolBar>
+                    <ToolBar Band="2" BandIndex="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Background="#FFDAE7F5">
+                        <Image x:Name="img_eye" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Source="Resource\Picture\eye.png"/>
+                        <Separator/>
+                        <Button x:Name="bt_toolbar_eye_track" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_eye_track_Click">
+                            <Image Source="Resource\Picture\track.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Gaze track"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button x:Name="bt_toolbar_eye_track_type" Content="S" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Black" FontSize="16" Foreground="White" FontWeight="Bold" Click="bt_toolbar_eye_track_type_Click">
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="S: Track move when scroll&#13;D: Track disappear when scroll"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_eye_track_colorpicker" Height="23" CurrentColor="Blue"/>
+                            <TextBox x:Name="tb_toolbar_eye_track_colorpicker" Text="{Binding ElementName=bt_toolbar_eye_track_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_eye_track_colorpicker_TextChanged"/>
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_eye_track_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_eye_track_linewidth_ValueChanged"/>
+                        <Separator/>
+                        <Button x:Name="bt_toolbar_eye_cursor" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_eye_cursor_Click">
+                            <Image Source="Resource\Picture\cursor.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Gaze cursor"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <Button x:Name="bt_toolbar_eye_cursor_circle" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_eye_cursor_circle_Click">
+                            <Image Source="Resource\Picture\circle.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Gaze cursor with circle shape"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_eye_cursor_circle_colorpicker" Height="23" CurrentColor="Blue"/>
+                            <TextBox x:Name="tb_toolbar_eye_cursor_circle_colorpicker" Text="{Binding ElementName=bt_toolbar_eye_cursor_circle_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_eye_cursor_circle_colorpicker_TextChanged"/>
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_eye_cursor_circle_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_eye_cursor_circle_linewidth_ValueChanged"/>
+                        <Separator/>
+                        <Button x:Name="bt_toolbar_eye_fixation" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_eye_fixation_Click">
+                            <Image Source="Resource\Picture\ring.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Gaze fixation"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_eye_fixation_colorpicker" Height="23" CurrentColor="Blue"/>
+                            <TextBox x:Name="tb_toolbar_eye_fixation_colorpicker" Text="{Binding ElementName=bt_toolbar_eye_fixation_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_eye_fixation_colorpicker_TextChanged"/>
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_eye_fixation_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_eye_fixation_linewidth_ValueChanged" />
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_eye_fixation_rate" Margin="5,1,0,0" Height="23" Width="40" Minimum="1" Maximum="9" Value="5" Background="Lavender" ValueChanged="iud_toolbar_eye_fixation_rate_ValueChanged">
+                            <wpfTool:IntegerUpDown.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Fixation circle will become bigger&#13;when this value becomes higher"/>
+                                </StackPanel>
+                            </wpfTool:IntegerUpDown.ToolTip>
+                        </wpfTool:IntegerUpDown>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_eye_browsertoolbarHeight" Margin="5,1,0,0" Height="23" Width="50" Minimum="0" Value="66" Background="Silver" ValueChanged="iud_toolbar_eye_browsertoolbarHeight_ValueChanged">
+                            <wpfTool:IntegerUpDown.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Set height of browser toolbar to let fixation&#13;at toolbar don't move during scrolling.&#13;Set this value to zero if you want to all&#13;fixations move during scrolling the page."/>
+                                </StackPanel>
+                            </wpfTool:IntegerUpDown.ToolTip>
+                        </wpfTool:IntegerUpDown>
+                        <Button x:Name="bt_toolbar_eye_scanpath" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_eye_scanpath_Click">
+                            <Image Source="Resource\Picture\scanpath.png"></Image>
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Gaze path"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_eye_scanpath_colorpicker" Height="23" CurrentColor="Blue"/>
+                            <TextBox x:Name="tb_toolbar_eye_scanpath_colorpicker" Text="{Binding ElementName=bt_toolbar_eye_scanpath_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_eye_scanpath_colorpicker_TextChanged" />
+                        </StackPanel>
+                        <wpfTool:IntegerUpDown x:Name="iud_toolbar_eye_scanpath_linewidth" Margin="0,1,0,0" Height="23" Width="40" Minimum="1" Maximum="10" Value="3" ValueChanged="iud_toolbar_eye_scanpath_linewidth_ValueChanged" />
+                        <Button x:Name="bt_toolbar_eye_fixationID" Content="ID" FontSize="15" Foreground="#3D3D3D" Height="25" Margin="3,1,0,0" VerticalAlignment="Top" Width="25" Background="Gray" Click="bt_toolbar_eye_fixationID_Click" >
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="Gaze fixation ID"/>
+                                </StackPanel>
+                            </Button.ToolTip>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="2,1,0,0">
+                            <CustomWPFColorPicker:ColorPickerControlView x:Name="bt_toolbar_eye_fixationID_colorpicker" Height="23" CurrentColor="Blue"/>
+                            <TextBox x:Name="tb_toolbar_eye_fixationID_colorpicker" Text="{Binding ElementName=bt_toolbar_eye_fixationID_colorpicker, Path=CurrentColor}" FontSize="1" IsReadOnly="True" Visibility="Hidden" Width="5" TextChanged="tb_toolbar_eye_fixationID_colorpicker_TextChanged"  />
+                        </StackPanel>
+                    </ToolBar>
+                </ToolBarTray>
+            </Grid>
+            <Grid x:Name="g_replay_window" Background="Black">
+                <WindowsFormsHost x:Name="wfh_replay_window"/>
+            </Grid>
+            <Grid x:Name="g_replay_url" Height="30" Background="Black">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tb_replay_urlname" Text="" Width="{Binding ActualWidth, ElementName=g_replay_url}" Background="Black" IsReadOnly="True" Foreground="White" FontSize="20" BorderBrush="Black"/>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="g_replay_bottomController" Height="45" Background="#FFD4D4D4" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="672">
+                    <Button x:Name="bt_replay_play" Content="▶" Style="{DynamicResource StartButtonStyle}" Width="30" Height="30" Margin="10,0,0,0" Click="bt_replay_play_Click"/>
+                    <Button x:Name="bt_replay_stop" Content="■" Style="{StaticResource StopButtonStyle}" Width="30" Height="30" Margin="10,0,0,0" Click="bt_replay_stop_Click"/>
+                    <Button x:Name="bt_replay_pagebackward" Content="◁" Style="{StaticResource BackwardButtonStyle}" Width="30" Height="30" Margin="10,0,0,0" Click="bt_replay_pagebackward_Click" >
+                        <Button.ToolTip>
+                            <StackPanel>
+                                <TextBlock Text="Next webpage"/>
+                            </StackPanel>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button x:Name="bt_replay_pageforward" Content="▷" Style="{StaticResource ForwardButtonStyle}" Width="30" Height="30" Margin="10,0,0,0" Click="bt_replay_pageforward_Click" >
+                        <Button.ToolTip>
+                            <StackPanel>
+                                <TextBlock Text="Previos webpage"/>
+                            </StackPanel>
+                        </Button.ToolTip>
+                    </Button>
+                    <Grid Width="327">
+                        <Slider x:Name="s_replay_timeBar" Margin="10,8,0,0" Value="0" Maximum="10" Minimum="0" IsSnapToTickEnabled="True" TickFrequency="1" SmallChange="1" LargeChange="5" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="1" ValueChanged="s_replay_timeBar_ValueChanged"/>
+                    </Grid>
+                    <Label x:Name="lb_replay_currenttime" Content="00:00:00" Width="70" Margin="10,10,0,0" FontSize="15"/>
+                    <Label x:Name="lb_replay_totaltime" Content="/" Width="80" Margin="-8,10,0,0" FontSize="15"/>
+
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

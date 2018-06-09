@@ -1,0 +1,24 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.ExportStatistics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Export Statistics Information" Icon="main.ico" Height="200" Width="260" Background="LightGray" Closed="Window_Closed" ResizeMode="CanMinimize">
+    <Grid>
+        <StackPanel Margin="10,10,10,10">
+            <TextBlock Text="Save Folder :" FontSize="13" Margin="0,0,0,5"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox x:Name="tb_exportStatistics_saveFolder" TextWrapping="NoWrap"  Text="D:\MoniChrome" Width="150" IsReadOnly="True"/>
+                <Button x:Name="bt_exportStatistics_browser" Content="Browse" Width="58" Margin="7,0,0,0" Click="bt_exportStatistics_browser_Click" />
+            </StackPanel>
+            <CheckBox x:Name="cb_exportStatistics_merge" Content="Merge information of entire subject&#13;with webpages information." Margin="0,0,0,10" Click="cb_exportStatistics_merge_Click"/>
+            <ProgressBar x:Name="pb_exportStatistics_processbar" Value="0" Maximum="100" Minimum="0" Height="20" Margin="0,0,0,12">
+                <ProgressBar.ToolTip>
+                    <TextBlock x:Name="tooltip_exportStatistics_processbar" Text="0"/>
+                </ProgressBar.ToolTip>
+            </ProgressBar>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="bt_exportStatistics_export" Content="Export" Width="60" Margin="0,0,20,0" Click="bt_exportStatistics_export_Click"/>
+                <Button x:Name="bt_exportStatistics_cancel" Content="Cancel" Width="60" Margin="20,0,0,0" Click="bt_exportStatistics_cancel_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

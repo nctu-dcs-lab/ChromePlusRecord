@@ -1,0 +1,25 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.StatisticsEntireSubject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Statistics Entire Subject" Icon="main.ico" Height="300" Width="890" SizeChanged="Window_SizeChanged" MinHeight="100">
+    <Grid>
+        <StackPanel>
+            <Grid x:Name="g_statistics_entireSubject" Height="267">
+                <DataGrid  x:Name="dg_statistics_entireSubject_datagrid" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=g_statistics_entireSubject}" Width="{Binding ActualWidth, ElementName=g_statistics_entireSubject}" VerticalAlignment="Top" RowHeaderWidth="20" ColumnHeaderHeight="40" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_subject" Header="Subject" Binding="{Binding subject}" Width="60" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_duration" Header="Duration (ms)" Binding="{Binding duration}" Width="87" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_eyedevice" Header="EyeDevice" Binding="{Binding eyedevice}" Width="87" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_webpage1" Header="Webpage (count)" Binding="{Binding webpage1}" Width="110" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_webpage2" Header="Webpage (count)&#13;With Different URL" Binding="{Binding webpage2}" Width="120" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_gaze_fixation1" Header="Gaze:&#13;Fixation (count)" Binding="{Binding gfixation1}" Width="100" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_gaze_fixation2" Header="Gaze:&#13;Fixation Duration (ms)" Binding="{Binding gfixation2}" Width="135" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_mouse_fixation1" Header="Mouse:&#13;Fixation (count)" Binding="{Binding mfixation1}" Width="100" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_entireSubject_mouse_fixation2" Header="Mouse:&#13;Fixation Duration (ms)" Binding="{Binding mfixation2}" Width="135" ></DataGridTextColumn>
+                        
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ScreenRecordPlusChrome.EyeDevice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             mc:Ignorable="d" d:DesignWidth="411" Height="260" Unloaded="UserControl_Unloaded">
+    <Grid>
+        <Grid x:Name="g_eyeTraceBox" Height="162" Margin="32,18,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="245"/>
+        <Button x:Name="bt_connect" Content="Connect" Margin="0,18,36,0" VerticalAlignment="Top" Height="75" Click="bt_connect_Click" HorizontalAlignment="Right" Width="60"/>
+        <Button x:Name="bt_calibrate" Content="Calibrate" Margin="0,105,36,0" VerticalAlignment="Top" Height="75" Click="bt_calibrate_Click" HorizontalAlignment="Right" Width="60"/>
+        <Button x:Name="bt_accept" Content="Accept" HorizontalAlignment="Left" Margin="299,189,0,0" VerticalAlignment="Top" Width="60" Height="54" FontSize="11" Click="bt_accept_Click"/>
+        <Label x:Name="lb_calibrationQ" Content="Calibration Quality:" HorizontalAlignment="Left" Height="26" Margin="32,189,0,0" VerticalAlignment="Top" Width="245"/>
+        <StackPanel x:Name="g_gdthreshold" Orientation="Horizontal" Margin="32,215,122,17">
+            <Label Content="Gaze Duration Threshold:" HorizontalAlignment="Left" Margin="0,0,12,0" VerticalAlignment="Center"/>
+            <wpfTool:IntegerUpDown x:Name="iud_gdthreshold" Height="20" Width="75" Margin="0,0,0,0" Maximum="10000" Minimum="1" Value="250" ValueChanged="iud_gdthreshold_ValueChanged"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

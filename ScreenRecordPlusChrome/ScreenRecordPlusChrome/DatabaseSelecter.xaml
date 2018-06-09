@@ -1,0 +1,13 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.DatabaseSelecter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        Title="Database" Icon="main.ico" Height="280" Width="250" Background="#FFE5E5E5" ResizeMode="CanMinimize" Closed="Window_Closed" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel Margin="5,5,5,5">
+            <wpfTool:CheckListBox x:Name="clb_databaseSelecter_subjectname" Height="150" Margin="0,0,0,5"/>
+            <Button x:Name="bt_databaseSelecter_go" Content="Show" Height="30" Margin="0,0,0,5" Click="bt_databaseSelecter_go_Click"/>
+            <Button x:Name="bt_databaseSelecter_export" Content="Export" Height="30" Click="bt_databaseSelecter_export_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

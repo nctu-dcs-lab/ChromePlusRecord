@@ -1,0 +1,38 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.ExportVideo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Export Video" Icon="main.ico" Height="175" Width="260" ResizeMode="CanMinimize" Closed="Window_Closed">
+    <Grid Background="LightGray">
+        <StackPanel >
+            <Grid>
+                <StackPanel Margin="10,10,10,5">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="Video Codec :" FontSize="13"/>
+                        <ComboBox x:Name="cb_exportVideo_codec" Margin="10,0,0,0" Width="120"/>
+                    </StackPanel>
+                    <TextBlock Text="Save Folder :" FontSize="13"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="tb_exportVideo_savefolder" TextWrapping="NoWrap"  Text="D:\MoniChrome" Width="150" IsReadOnly="True"/>
+                        <Button x:Name="bt_exportVideo_browser" Content="Browse" Width="58" Margin="7,0,0,0" Click="bt_exportVideo_browser_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Height="25">
+                <StackPanel Orientation="Horizontal" Margin="10,3,10,3">
+                    <ProgressBar x:Name="pb_exportVideo_processbar" Width="220" Maximum="100" Minimum="0">
+                        <ProgressBar.ToolTip>
+                            <TextBlock x:Name="tooltip_exportVideo_processbar" Text="0"/>
+                        </ProgressBar.ToolTip>
+                    </ProgressBar>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,5,10,5">
+                    <Button x:Name="bt_exportVideo_export" Content="Export" Margin="0,0,20,0" Width="50" Click="bt_exportVideo_export_Click"/>
+                    <Button x:Name="bt_cancelExportVideo_export" Content="Cancel" Margin="20,0,0,0" Width="50" Click="bt_cancelExportVideo_export_Click"  />
+                </StackPanel>
+            </Grid>
+         
+        </StackPanel>
+    </Grid>
+</Window>

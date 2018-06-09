@@ -1,0 +1,423 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.Statistics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        Title="Statistics" Icon="main.ico" Height="447" Width="790" SizeChanged="Window_SizeChanged" MinWidth="790" MinHeight="330" Loaded="Window_Loaded" Closed="Window_Closed">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ScreenRecordPlusChrome;component/Resource/Style/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FFC1C1C1">
+        <StackPanel>
+            <Grid x:Name="g_statistics_top" Height="230">
+                <TabControl x:Name="tc_statistics_main" HorizontalAlignment="Left" Height="217" Width="760" Margin="5,10,0,0" VerticalAlignment="Top" >
+                    <TabItem Header="Subject">
+                        <Grid Background="#FFE5E5E5">
+                            <StackPanel Orientation="Horizontal" Margin="5,15,5,5">
+                                <Border BorderBrush="White"  BorderThickness="2" Width="210">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <wpfTool:CheckListBox x:Name="clb_statistics_subjectname" Height="120"/>
+                                            <Button x:Name="bt_statistics_subject_analysis" Content="Entire Subject Analysis" Margin="0,5,0,0" Background="#FFC1C1C1" Click="bt_statistics_subject_analysis_Click">
+                                                <Button.ToolTip>
+                                                    <Border Background="LightBlue" Margin="2,2,2,2">
+                                                        <StackPanel>
+                                                            <TextBlock FontWeight="Bold" Text="Calculate Information :"/>
+                                                            <TextBlock Text="Calculate information of entire subject&#13;and show it on other table."/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Button.ToolTip>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <Label Content="Subjects" Background="#FFE5E5E5" Margin="15,3,0,0" Height="28" Width="57" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Gaze">
+                        <Grid Background="#FFE5E5E5">
+                            <StackPanel Orientation="Horizontal" Margin="5,15,5,5">
+                                <Border BorderBrush="White"  BorderThickness="2" Width="200">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_gaze_fixation1" Content="fixation (count)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5">
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="The number of fixations(count)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_fixation2" Content="fixation (count/s)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5">
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="The number of fixations / Duration of the webpage(count/s)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_fixation3" Content="fixation duration mean (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5">
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of fixation time(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_fixation4" Content="fixation duration median (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5">
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Median of fixation time(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_fixation5" Content="fixation duration (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5">
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Total fixation time(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_fixation6" Content="fixation/URL duration ratio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5">
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Total fixation time / Duration of the webpage"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="White"  BorderThickness="2" Width="185" Margin="5,0,0,0">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_gaze_saccade1" Content="avg. saccade length (px)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Path length / The number of saccades(px)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_saccade2" Content="avg. saccade duration (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of saccade time(ms)&#13;[Saccade time: Path time - Fixation time]"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_saccade3" Content="avg. saccade rate (px/s)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of saccade rate(px/s)&#13;[Saccade rate: Saccade length / Saccade time between two fixations]"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="White"  BorderThickness="2" Width="140" Margin="5,0,0,0">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_gaze_path1" Content="path length (px)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Total direct length between fixations(px)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_path2" Content="path duration (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Time from first fixation to last fixation(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="White"  BorderThickness="2" Width="205" Margin="5,0,0,0">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_gaze_interaction1" Content="fixations until first click (count)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Fixations until first click(count)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_gaze_interaction2" Content="avg. gaze/mouse distance (px)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of direct length between gaze point and mouse point(px)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <Label Content="Gaze fixations" Background="#FFE5E5E5" Margin="15,3,0,0" Height="28" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Gaze saccades" Background="#FFE5E5E5" Margin="220,3,0,0" Height="28" Width="95" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Gaze path" Background="#FFE5E5E5" Margin="410,3,0,0" Height="28" Width="68" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Gaze Mouse interaction" Background="#FFE5E5E5" Margin="555,3,0,0" Height="28" Width="145" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Mouse">
+                        <Grid Background="#FFE5E5E5">
+                            <StackPanel Orientation="Horizontal" Margin="5,15,5,5">
+                                <Border BorderBrush="White"  BorderThickness="2" Width="200">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_mouse_fixation1" Content="fixation (count)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="The number of fixations(count)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_fixation2" Content="fixation (count/s)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="The number of fixations / Duration of the webpage(count/s)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_fixation3" Content="fixation duration mean (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of fixation time(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_fixation4" Content="fixation duration median (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Median of fixation time(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_fixation5" Content="fixation duration (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Total fixation time(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_fixation6" Content="fixation/URL duration ratio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Total fixation time / Duration of the webpage"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="White"  BorderThickness="2" Width="185" Margin="5,0,0,0">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_mouse_saccade1" Content="avg. saccade length (px)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Path length / The number of saccades(px)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_saccade2" Content="avg. saccade duration (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of saccade time(ms)&#13;[Saccade time: Path time - Fixation time]"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_saccade3" Content="avg. saccade rate (px/s)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average of saccade rate(px/s)&#13;[Saccade rate: Saccade length / Saccade time between two fixations]"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="White"  BorderThickness="2" Width="140" Margin="5,0,0,0">
+                                    <Grid>
+                                        <StackPanel Margin="5,15,5,5">
+                                            <CheckBox x:Name="cb_statistics_mouse_path1" Content="path length (px)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Total direct length between fixations(px)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                            <CheckBox x:Name="cb_statistics_mouse_path2" Content="path duration (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                <CheckBox.ToolTip>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Time from first fixation to last fixation(ms)"/>
+                                                    </StackPanel>
+                                                </CheckBox.ToolTip>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="White"  BorderThickness="2" Width="205" Margin="5,0,0,0">
+                                    <Grid>
+                                        <StackPanel>
+                                            <StackPanel Margin="5,15,5,5" Orientation="Horizontal" Background="Silver">
+                                                <CheckBox x:Name="cb_statistics_mouse_click_1" Content="L" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Left mouse button"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                                <CheckBox x:Name="cb_statistics_mouse_click_2" Content="R" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Right mouse button"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                                <CheckBox x:Name="cb_statistics_mouse_click_3" Content="M" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Middle mouse button"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                            </StackPanel>
+                                            <StackPanel Margin="5,0,5,5">
+                                                <CheckBox x:Name="cb_statistics_mouse_clicks_1" Content="click (count)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="The number of clicks(count)"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                                <CheckBox x:Name="cb_statistics_mouse_clicks_2" Content="click rate (count/s)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="The number of clicks / Duration of the webpage(count/s)"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                                <CheckBox x:Name="cb_statistics_mouse_clicks_3" Content="fixations until first click (count)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Fixations until first click(count)"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                                <CheckBox x:Name="cb_statistics_mouse_clicks_4" Content="time until first click (ms)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" >
+                                                    <CheckBox.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="Time until first click(ms)"/>
+                                                        </StackPanel>
+                                                    </CheckBox.ToolTip>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <Label Content="Mouse fixations" Background="#FFE5E5E5" Margin="15,3,0,0" Height="28" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Mouse saccades" Background="#FFE5E5E5" Margin="220,3,0,0" Height="28" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Mouse path" Background="#FFE5E5E5" Margin="410,3,0,0" Height="28" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Mouse clicks" Background="#FFE5E5E5" Margin="555,3,0,0" Height="28" Width="83" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <Button x:Name="bt_statistics_export" Content="E" Style="{DynamicResource FixationCalButtonStyle}" HorizontalAlignment="Left" Margin="630,5,0,0" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Background="{x:Null}" Click="bt_statistics_export_Click">
+                    <Button.ToolTip>
+                        <Border Background="LightBlue" Margin="2,2,2,2">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" Text="Export :"/>
+                                <TextBlock Text="Export all information on selected subjects&#13;to text files. You can select 'merge' to merge&#13;entire subject information to URL information."/>
+                            </StackPanel>
+                        </Border>
+                    </Button.ToolTip>
+                </Button>
+                <Button x:Name="bt_statistics_calculatefixation" Content="F" Style="{DynamicResource FixationCalButtonStyle}" HorizontalAlignment="Left" Margin="660,5,0,0" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Background="{x:Null}" Click="bt_statistics_calculatefixation_Click">
+                    <Button.ToolTip>
+                        <Border Background="LightBlue" Margin="2,2,2,2">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" Text="Calculate Fixations :"/>
+                                <TextBlock Text="Calculate fixations of selected subjects."/>
+                            </StackPanel>
+                        </Border>
+                    </Button.ToolTip>
+                </Button>
+                <Button x:Name="bt_statistics_calculate" Content="Calculate" Width="65" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="690,5,0,0" BorderBrush="White" Background="SteelBlue" Foreground="White" Click="bt_statistics_calculate_Click">
+                    <Button.ToolTip>
+                        <Border Background="LightBlue" Margin="2,2,2,2">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" Text="Calculate Information :"/>
+                                <TextBlock Text="Calculate information of selected subjects&#13;and show it on table below."/>
+                            </StackPanel>
+                        </Border>
+                    </Button.ToolTip>
+                </Button>
+            </Grid>
+            <Grid x:Name="g_statistics_bottom" Height="180">
+                <DataGrid  x:Name="dg_statistics_datagrid" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=g_statistics_bottom}" Width="760" Margin="5,0,0,0" VerticalAlignment="Top" RowHeaderWidth="20" ColumnHeaderHeight="50" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="dgtc_statistics_subject" Header="Subject" Binding="{Binding subject}" Width="60" ></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_id" Header="WebpageID" Binding="{Binding id}" Width="80" ></DataGridTextColumn>
+                        <DataGridHyperlinkColumn x:Name="dgtc_statistics_webpage" Header="Webpage" Binding="{Binding webpage}" Width="70"  ></DataGridHyperlinkColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_keyword" Header="Keyword" Binding="{Binding keyword}" Width="60"  ></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_fixation1" Header="Gaze:&#13;Fixation (count)" Binding="{Binding gfixation1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_fixation2" Header="Gaze:&#13;Fixation (count/s)" Binding="{Binding gfixation2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_fixation3" Header="Gaze:&#13;Fixation Duration Mean (ms)" Binding="{Binding gfixation3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_fixation4" Header="Gaze:&#13;Fixation Duration Median (ms)" Binding="{Binding gfixation4}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_fixation5" Header="Gaze:&#13;Fixation Duration (ms)" Binding="{Binding gfixation5}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_fixation6" Header="Gaze:&#13;Fixation Duration/URL Duration Ratio" Binding="{Binding gfixation6}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_saccade1" Header="Gaze:&#13;Average Saccade Length (px)" Binding="{Binding gsaccade1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_saccade2" Header="Gaze:&#13;Average Saccade Duration (ms)" Binding="{Binding gsaccade2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_saccade3" Header="Gaze:&#13;Average Saccade Rate (px/s)" Binding="{Binding gsaccade3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_path1" Header="Gaze:&#13;Path Length (px)" Binding="{Binding gpath1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_path2" Header="Gaze:&#13;Path Duration (ms)" Binding="{Binding gpath2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_interaction1" Header="Gaze:&#13;FUFC (count)" Binding="{Binding ginteraction1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_gaze_interaction2" Header="Gaze:&#13;Average Gaze Mouse Distance (px)" Binding="{Binding ginteraction2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_fixation1" Header="Mouse:&#13;Fixation (count)" Binding="{Binding mfixation1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_fixation2" Header="Mouse:&#13;Fixation (count/s)" Binding="{Binding mfixation2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_fixation3" Header="Mouse:&#13;Fixation Duration Mean (ms)" Binding="{Binding mfixation3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_fixation4" Header="Mouse:&#13;Fixation Duration Median (ms)" Binding="{Binding mfixation4}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_fixation5" Header="Mouse:&#13;Fixation Duration (ms)" Binding="{Binding mfixation5}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_fixation6" Header="Mouse:&#13;Fixation Duration/URL Duration Ratio" Binding="{Binding mfixation6}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_saccade1" Header="Mouse:&#13;Average Saccade Length (px)" Binding="{Binding msaccade1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_saccade2" Header="Mouse:&#13;Average Saccade Duration (ms)" Binding="{Binding msaccade2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_saccade3" Header="Mouse:&#13;Average Saccade Rate (px/s)" Binding="{Binding msaccade3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_path1" Header="Mouse:&#13;Path Length (px)" Binding="{Binding mpath1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_path2" Header="Mouse:&#13;Path Duration (ms)" Binding="{Binding mpath2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_lclick1" Header="Mouse:&#13;L Click (count)" Binding="{Binding mlclick1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_lclick2" Header="Mouse:&#13;L Click Rate (count/s)" Binding="{Binding mlclick2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_lclick3" Header="Mouse:&#13;L FUFC (count)" Binding="{Binding mlclick3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_lclick4" Header="Mouse:&#13;L TUFC (ms)" Binding="{Binding mlclick4}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_rclick1" Header="Mouse:&#13;R Click (count)" Binding="{Binding mrclick1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_rclick2" Header="Mouse:&#13;R Click Rate (count/s)" Binding="{Binding mrclick2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_rclick3" Header="Mouse:&#13;R FUFC (count)" Binding="{Binding mrclick3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_rclick4" Header="Mouse:&#13;R TUFC (ms)" Binding="{Binding mrclick4}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_mclick1" Header="Mouse:&#13;M Click (count)" Binding="{Binding mmclick1}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_mclick2" Header="Mouse:&#13;M Click Rate (count/s)" Binding="{Binding mmclick2}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_mclick3" Header="Mouse:&#13;M FUFC (count)" Binding="{Binding mmclick3}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+                        <DataGridTextColumn x:Name="dgtc_statistics_mouse_mclick4" Header="Mouse:&#13;M TUFC (ms)" Binding="{Binding mmclick4}" Width="110" Visibility="Hidden"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

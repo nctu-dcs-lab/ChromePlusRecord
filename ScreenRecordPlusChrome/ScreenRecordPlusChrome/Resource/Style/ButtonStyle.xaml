@@ -1,0 +1,226 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <RadialGradientBrush x:Key="RoundButtonDefaultBrush">
+        <GradientStop Color="#595959" Offset="1"/>
+    </RadialGradientBrush>
+    <RadialGradientBrush x:Key="RoundButtonPressedBrush">
+        <GradientStop Color="#005c99" Offset="1"/>
+    </RadialGradientBrush>
+    <RadialGradientBrush x:Key="RoundButtonMouseOverBrush">
+        <GradientStop Color="#005c99" Offset="1"/>
+    </RadialGradientBrush>
+    <ControlTemplate x:Key="StartButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="27"
+                         Height="27" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="4,0,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="15"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="PauseButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="27"
+                         Height="27" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="0,0,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="15"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="StopButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="27"
+                         Height="27" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="1,-7,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="24"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SoundButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="27"
+                         Height="27" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="0,0,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="20"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ForwardButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="27"
+                         Height="27" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="4,0,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="15"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="BackwardButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="27"
+                         Height="27" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="-2,0,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="15"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="FixationCalButtonTemplate" TargetType="Button">
+        <Grid>
+            <Ellipse Name="PART_Ellipse" 
+                         Width="20"
+                         Height="20" 
+                         Stroke="DarkSlateGray"
+                         Fill="{StaticResource RoundButtonDefaultBrush}"/>
+            <ContentPresenter Name="PART_ContentPresenter"  ContentSource="Content" Margin="0,0,0,0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  TextBlock.Foreground="White"
+                                  TextBlock.FontSize="15"
+                                  TextBlock.FontWeight="Bold"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonMouseOverBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PART_Ellipse" Property="Fill" Value="{StaticResource RoundButtonPressedBrush}" />
+                <Setter TargetName="PART_ContentPresenter" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <Style x:Key="StartButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource StartButtonTemplate}" />
+    </Style>
+    <Style x:Key="PauseButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource PauseButtonTemplate}" />
+    </Style>
+    <Style x:Key="StopButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource StopButtonTemplate}" />
+    </Style>
+    <Style x:Key="SoundButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource SoundButtonTemplate}" />
+    </Style>
+    <Style x:Key="ForwardButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource ForwardButtonTemplate}" />
+    </Style>
+    <Style x:Key="BackwardButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource BackwardButtonTemplate}" />
+    </Style>
+    <Style x:Key="FixationCalButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template" Value="{StaticResource FixationCalButtonTemplate}" />
+    </Style>
+
+
+</ResourceDictionary>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="ScreenRecordPlusChrome.Analyze"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Analysis Tools" Icon="main.ico" Height="256" Width="355" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid Height="90" VerticalAlignment="Bottom">
+            <TextBox x:Name="tb_analyze_SaveFolder" HorizontalAlignment="Left" Height="21" Margin="10,32,0,0" TextWrapping="NoWrap"  Text="D:\MoniChrome" VerticalAlignment="Top" Width="236" TextChanged="tb_analyze_SaveFolder_TextChanged" IsReadOnly="True"/>
+            <Button x:Name="bt_analyze_browse" Content="Browse" HorizontalAlignment="Left" Margin="251,31,0,0" VerticalAlignment="Top" Width="72" Height="22" Click="bt_analyze_browse_Click"/>
+            <Label Content="Select Main Dir :" HorizontalAlignment="Left" Margin="8,4,0,0" VerticalAlignment="Top" Width="196"/>
+            <Label Content="Project Name :" HorizontalAlignment="Left" Margin="8,55,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cb_analyze_projectName" HorizontalAlignment="Left" Margin="105,59,0,0" VerticalAlignment="Top" Width="218"/>
+        </Grid>
+        <StackPanel Background="#FFC1C1C1" Height="124" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button x:Name="bt_analyze_replay" Content="Replay&#13;  Tool" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="bt_analyze_replay_Click"/>
+            <Button x:Name="bt_analyze_database" Content="Database&#13;    Tool" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="bt_analyze_database_Click"/>
+            <Button x:Name="bt_analyze_statistics" Content="Statistics&#13;   Tool" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="bt_analyze_statistics_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
